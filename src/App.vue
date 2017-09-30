@@ -1,49 +1,92 @@
 <template>
   <div id="app">
-    <main>
-      <h1>Aktuality</h1>
-      <p>Lorem Doupe Ipsum</p>
-      <router-view></router-view>
-    </main>
+    <div class="skin-historic flex" v-if="skin == 'historic'">
+      <main>
+        <router-view></router-view>
+      </main>
 
-    <aside class="left">
-        <nav>
-            <ul>
-                <li>Rubriky
-                    <ul>
-                        <li>Tvorba
-                            <ul>
-                                <li>Články&amp;Eseje</li>
-                                <li>Galerie</li>
-                                <li>Fotogalerie</li>
-                                <li>Hřbitov</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+      <nav class="top">
+        <ul>
+          <li>Fórum</li>
+          <li>Ankety</li>
+          <li>Chat</li>
+          <li>...</li>
+        </ul>
+      </nav>
 
-    <aside class="right">
-        <nav>
-            <ul>
-                <li>Vzhled
-                    <ul>
-                        <li>Family Silver</li>
-                        <li>Historic</li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+      <nav class="left">
+        <ul>
+          <li>Články&amp;Eseje</li>
+          <li>Galerie</li>
+          <li>Fotogalerie</li>
+          <li>Hřbitov</li>
+        </ul>
+      </nav>
 
+      <nav>
+          <ul>
+              <li>Vzhled
+                  <ul>
+                      <li><a href="#" v-on:click="changeSkin('light', $event)">Light</a></li>
+                      <li><a href="#" v-on:click="changeSkin('historic', $event)">Historic</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </nav>
+
+    </div>
+
+    <!-- Else display default Light skin -->
+    <div class="skin-light flex" v-else>
+      <main>
+        <router-view></router-view>
+      </main>
+      <nav class="left">
+          <ul>
+              <li>Rubriky
+                  <ul>
+                      <li>Tvorba
+                          <ul>
+                              <li>Články&amp;Eseje |{{skin}}| </li>
+                              <li>Galerie</li>
+                              <li>Fotogalerie</li>
+                              <li>Hřbitov</li>
+                          </ul>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </nav>
+
+      <nav class="right">
+          <ul>
+              <li>Vzhled
+                  <ul>
+                      <li><a href="#" v-on:click="changeSkin('light', $event)">Light</a></li>
+                      <li><a href="#" v-on:click="changeSkin('historic', $event)">Historic</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'fext'
+  data () {
+    return {
+      skin: this.$root.$data.store.state.skin
+    }
+  },
+  methods: {
+    changeSkin (skin, event) {
+      event.preventDefault()
+      this.$root.$data.store.setSkin(skin)
+      console.log('skin' + this.$root.$data.store.state.skin)
+      document.getElementsByTagName('body')[0].setAttribute('class', skin)
+    }
+  }
 }
 </script>
 
@@ -52,23 +95,45 @@ body {
     background-color: #c0c0c0;
 }
 
-#app {
+body.historic {
+    background-color: red;
+}
+
+#app div.flex{
     display: flex;
 }
 
-aside {
+body.historic nav {
     width: 15%;
 }
 
-aside.left {
+body.historic nav.left {
     order: 0;
 }
-main {
+body.historic main {
     width: 70%;
     order: 1;
 }
 
-aside.right {
+body.historic nav.right {
+    order: 2;
+}
+
+
+
+body.light nav {
+    width: 15%;
+}
+
+body.light nav.left {
+    order: 0;
+}
+body.light main {
+    width: 70%;
+    order: 1;
+}
+
+body.light nav.right {
     order: 2;
 }
 </style>

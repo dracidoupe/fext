@@ -1,6 +1,9 @@
-# fext
+# Fext: reanimating dead
 
-> Reanimating dead
+SPA using DDCZ API to power future DDCZ frotnet. Few tricks will be needed for URL friendlyness. 
+
+API is currently mocked. URL for testing available at http://docs.ddcz.apiary.io/. 
+
 
 ## Build Setup
 
@@ -23,5 +26,3 @@ npm run unit
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
