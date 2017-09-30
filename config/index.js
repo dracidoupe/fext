@@ -1,5 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
   build: {
@@ -34,5 +35,19 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        }
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin("style.css")
+  ]
 }
