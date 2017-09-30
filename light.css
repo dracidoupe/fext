@@ -1,0 +1,23 @@
+body {
+    background-color: #c0c0c0;
+}
+
+#flex {
+    display: flex;
+}
+
+aside {
+    width: 15%;
+}
+
+aside.left {
+    order: 0;
+}
+main {
+    width: 70%;
+    order: 1;
+}
+
+aside.right {
+    order: 2;
+}
