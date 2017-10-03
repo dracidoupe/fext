@@ -137,6 +137,7 @@ body.light h1.page-heading {
   color: white;
   text-align: center;
   font-size: 150%;
+  padding: 3px;
 }
 
 
