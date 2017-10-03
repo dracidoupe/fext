@@ -93,7 +93,14 @@ export default {
 <style>
 body {
     background-color: #c0c0c0;
+    font-family: Verdana, Arial, sans-serif;
 }
+
+.logo {
+    width: 100%;
+    text-align: center;
+}
+
 
 body.historic {
     background-color: red;
@@ -135,5 +142,14 @@ body.light main {
 
 body.light nav.right {
     order: 2;
+}
+
+body.light a {
+    color: #2f4f4f;
+    text-decoration: none;
+}
+
+body.light a:hover{
+    color: #0d2d2d;
 }
 </style>
