@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1 class="page-heading">Aktuality</h1>
+      <h1 class="page-heading">{{ name }}</h1>
       <div v-html="page_intro"></div>
       <article v-for="item in items">
         <header>
@@ -20,29 +20,28 @@
 <script>
 export default {
   name: 'hello',
+  created: function () {
+    this.fetchContent()
+  },
+  methods: {
+    fetchContent () {
+      this.$http.get('https://private-c96zzzfd2-ddcz.apiary-mock.com/aktuality/').then((response) => {
+        return response.body
+      }).then((data) => {
+        data.items.forEach((item) => {
+          item.date = new Date(item.date)
+          this.items.push(item)
+        })
+      }).catch((error) => {
+        console.log('Can not fetch resource: ', error)
+      })
+    }
+  },
   data () {
     return {
+      name: 'Aktuality',
       page_intro: 'Vítejte na největším serveru <a href="http://www.dracidoupe.cz/index.php?rub=cojetodrd&skin=light">o Dračím Doupěti</a>. Najdete zde spoustu doplňků, článků či diskuzí k tématům. Pomocí menu "Skiny" si můžete změnit i vzhled tohoto webu, přesně podle Vašeho vkusu. Chcete-li využít všech funkcí tohoto webu, měli byste se zaregistrovat. ',
-      items: [
-        {
-          date: new Date(),
-          title: 'Example News',
-          text: 'Text of news (tm)',
-          author: {
-            nick: 'Unknown/N',
-            _url: '/uzivatele/123/'
-          }
-        },
-        {
-          date: new Date(),
-          title: 'Example News 2',
-          text: 'Text of news (tm), but longer',
-          author: {
-            nick: 'Unknown/N',
-            _url: '/uzivatele/123/'
-          }
-        }
-      ]
+      items: []
     }
   }
 }

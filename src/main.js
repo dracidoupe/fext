@@ -1,8 +1,11 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
+
+Vue.use(VueResource)
 
 var selectedSkin = localStorage.getItem('ddcz-skin') || 'light'
 
