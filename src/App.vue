@@ -47,7 +47,7 @@
                   <ul>
                       <li>Tvorba
                           <ul>
-                              <li>Články&amp;Eseje |{{skin}}| </li>
+                              <li>Články&amp;Eseje</li>
                               <li>Galerie</li>
                               <li>Fotogalerie</li>
                               <li>Hřbitov</li>
