@@ -42,15 +42,15 @@
         <router-view></router-view>
       </main>
       <nav class="left">
-          <ul>
-              <li>Rubriky
+          <ul class="nav_border">
+              <li><span class="list_heading">Rubriky</span>
                   <ul>
-                      <li>Tvorba
+                      <li><span class="list_subheading">Tvorba</span>
                           <ul>
-                              <li>Články&amp;Eseje</li>
-                              <li>Galerie</li>
-                              <li>Fotogalerie</li>
-                              <li>Hřbitov</li>
+                              <li><a href="#">Články&amp;Eseje</a></li>
+                              <li><a href="#">Galerie</a></li>
+                              <li><a href="#">Fotogalerie</a></li>
+                              <li><a href="#">Hřbitov</a></li>
                           </ul>
                       </li>
                   </ul>
@@ -60,7 +60,7 @@
 
       <nav class="right">
           <ul>
-              <li>Vzhled
+              <li><span class="list_heading">Vzhled</span>
                   <ul>
                       <li><a href="#" v-on:click="changeSkin('light', $event)">Light</a></li>
                       <li><a href="#" v-on:click="changeSkin('historic', $event)">Historic</a></li>
@@ -128,9 +128,70 @@ body.historic nav.right {
 
 
 
+body.light h1.page-heading {
+  width: 100%;
+  font-weight: bold;
+  border-top: 0px;
+  border-bottom: 0px;
+  background-color: #2f4f4f;
+  color: white;
+  text-align: center;
+  font-size: 150%;
+}
+
+
 body.light nav {
     width: 15%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
+
+body.light nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body.light ul.nav_border {
+  display: block;
+  border: solid 1px;
+}
+
+body.light nav .list_heading {
+  font-weight: bold;
+  background-color: #2f4f4f;
+  color: white;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+body.light nav .list_subheading {
+  background-color: #aaaaaa;
+  display: block;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
+}
+
+body.light nav .list_subheading::before {
+  content: "- ";
+}
+
+body.light nav .list_subheading::after {
+  content: " -";
+}
+
+body.light nav ul li a {
+  font-weight: bold;
+  display: block;
+}
+
+body.light nav ul li a::first-letter {
+  color: #000050;
+}
+
 
 body.light nav.left {
     order: 0;

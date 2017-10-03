@@ -51,18 +51,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-h1.page-heading {
-  width: 100%;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  border-top: 0px;
-  border-bottom: 0px;
-  background-color: #2f4f4f;
-  color: white;
-  text-align: center;
-  font-size: 150%;
-}
-
 header time {
   font-weight: bold;
 }
