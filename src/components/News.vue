@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     fetchContent () {
-      this.$http.get('https://private-c96zzzfd2-ddcz.apiary-mock.com/aktuality/').then((response) => {
+      this.$http.get('http://localhost:8000/aktuality/', {'responseType': 'json'}).then((response) => {
         return response.body
       }).then((data) => {
         data.items.forEach((item) => {
