@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     fetchContent () {
-      this.$http.get('http://localhost:8000/aktuality/', {'responseType': 'json'}).then((response) => {
+      this.$http.get(process.env.API_ROOT_URL + '/aktuality/', {'responseType': 'json'}).then((response) => {
         return response.body
       }).then((data) => {
         data.items.forEach((item) => {
